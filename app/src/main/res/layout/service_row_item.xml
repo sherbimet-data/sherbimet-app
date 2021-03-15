@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:text="Service Name"
         android:textSize="30sp"
-        android:textColor="@color/black"
+        android:textColor="@color/red"
         android:textStyle="bold"
         android:id="@+id/tv1"
         />
