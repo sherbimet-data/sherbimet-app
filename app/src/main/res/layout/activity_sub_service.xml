@@ -5,12 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
-    tools:context=".PackageActivity">
+    tools:context=".SubServiceActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/rvPackage"/>
+        android:id="@+id/rvSubService">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>

@@ -1,9 +1,11 @@
 package com.project.sherbimet;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.LinearLayout;
@@ -17,6 +19,7 @@ import com.android.volley.toolbox.Volley;
 import com.project.sherbimet.Adapter.ServiceAdapter;
 import com.project.sherbimet.ApiHelper.JsonField;
 import com.project.sherbimet.ApiHelper.WebURL;
+import com.project.sherbimet.Listner.ServiceItemClickListner;
 import com.project.sherbimet.Model.Service;
 
 import org.json.JSONArray;
@@ -25,7 +28,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class ServiceCatagoryActivity extends AppCompatActivity {
+public class ServiceCatagoryActivity extends AppCompatActivity implements ServiceItemClickListner {
 
     RecyclerView rvService;
     ArrayList<Service> listService;
@@ -41,6 +44,10 @@ public class ServiceCatagoryActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager =
                 new LinearLayoutManager(ServiceCatagoryActivity.this);
         rvService.setLayoutManager(linearLayoutManager);
+
+        /*GridLayoutManager gridLayoutManager =
+                new GridLayoutManager(ServiceCatagoryActivity.this,2);
+        rvService.setLayoutManager(gridLayoutManager);*/
 
         getService();
 
@@ -96,6 +103,7 @@ public class ServiceCatagoryActivity extends AppCompatActivity {
 
                     ServiceAdapter serviceAdapter =
                             new ServiceAdapter(ServiceCatagoryActivity.this,listService);
+                    serviceAdapter.setServiceItemClickListner(ServiceCatagoryActivity.this);
                     rvService.setAdapter(serviceAdapter);
 
                 }
@@ -104,5 +112,19 @@ public class ServiceCatagoryActivity extends AppCompatActivity {
         catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void setOnItemClicked(ArrayList<Service> listservice, int position) {
+
+        Intent intent = new Intent(ServiceCatagoryActivity.this,SubServiceActivity.class);
+        Service service = listservice.get(position);
+        String id = service.getService_id();
+        Log.d("res",id);
+        String name = service.getService_name();
+        intent.putExtra(JsonField.SERVICE_ID,id);
+        intent.putExtra(JsonField.SERVICE_NAME,name);
+        startActivity(intent);
+
     }
 }

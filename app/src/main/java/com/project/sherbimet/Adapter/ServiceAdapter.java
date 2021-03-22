@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.project.sherbimet.ApiHelper.WebURL;
+import com.project.sherbimet.Listner.ServiceItemClickListner;
 import com.project.sherbimet.Model.Service;
 import com.project.sherbimet.R;
 
@@ -20,6 +21,16 @@ import java.util.ArrayList;
 public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.viewHolder> {
     Context context;
     ArrayList<Service> listservice;
+
+    ServiceItemClickListner serviceItemClickListner;
+
+    public ServiceItemClickListner getServiceItemClickListner() {
+        return serviceItemClickListner;
+    }
+
+    public void setServiceItemClickListner(ServiceItemClickListner serviceItemClickListner){
+        this.serviceItemClickListner = serviceItemClickListner;
+    }
 
     public ServiceAdapter(Context context, ArrayList<Service> listservice) {
         this.context = context;
@@ -45,6 +56,15 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.viewHold
         holder.tv1.setText(name);
 
         Glide.with(context).load(WebURL.KEY_IMAGE_URL+service.getService_photo_path()).into(holder.iv1);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ServiceItemClickListner listner = getServiceItemClickListner();
+                listner.setOnItemClicked(listservice,position);
+            }
+        });
 
     }
 
