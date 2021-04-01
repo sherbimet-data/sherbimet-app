@@ -20,17 +20,19 @@
             android:required="false" />
 
         <activity android:name=".ServiceCatagoryActivity">
+
+        </activity>
+        <activity android:name=".SplashScreenActivity" />
+        <activity android:name=".AboutUsActivity" />
+        <activity android:name=".VerifyOtpActivity" />
+        <activity android:name=".RegistrationOtpActivity" />
+        <activity android:name=".RegistrationActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SplashScreenActivity" />
-        <activity android:name=".AboutUsActivity" />
-        <activity android:name=".VerifyOtpActivity" />
-        <activity android:name=".RegistrationOtpActivity" />
-        <activity android:name=".RegistrationActivity" />
         <activity android:name=".LoginOtpActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity" />
