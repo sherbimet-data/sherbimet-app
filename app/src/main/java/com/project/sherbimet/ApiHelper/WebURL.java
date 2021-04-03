@@ -2,7 +2,7 @@ package com.project.sherbimet.ApiHelper;
 
 public class WebURL {
 
-    private static final String IP_ADDRESS = "192.168.0.105";
+    private static final String IP_ADDRESS = "192.168.0.107";
 
     private static final String KEY_MAIN_URL="http://"+IP_ADDRESS+"/sherbimet/";
 
